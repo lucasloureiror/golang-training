@@ -8,11 +8,12 @@ import "fmt"
 
 	1.Funções são tipos de dados: Eu consigo criar uma variável e ela ser uma função.
 	2. Funções podem ter MAIS DE UM retorno: Isso é muito útil para retornar erros.
+	3. Retorno das funções:
+		a. Retorno nomeado: Um tipo de função que as variáveis de retorno já são estabelecidas na própria declaração, facilitando o return direto.const
 
 
 
 */
-
 
 func main(){
 
@@ -58,5 +59,15 @@ func calculosMatematicos (n1, n2 int8) (int8, int8){ //Declarando que a função
 	subtracao := n1 - n2
 
 	return soma, subtracao
+
+}
+
+func calculosMatematicosComRetornoNomeado(n1, n2 int8)(soma, subtracao int8) { //Dou nome para as variáveis de retorno para facilitar!
+	soma = n1 + n2
+	subtracao = n1 - n2
+
+	return //Retorno OS DOIS JÁ DE CARA!
+	
+	
 
 }
