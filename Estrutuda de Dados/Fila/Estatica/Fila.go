@@ -1,4 +1,4 @@
-package Fila
+package Estrutura
 
 type Elemento struct{
 	chave int;
@@ -6,45 +6,53 @@ type Elemento struct{
 
 }
 
-type apontador *No;
-
-type No struct{
-
-	proximo apontador;
-	item Elemento;
-}
+type apontador *Elemento;
 
 type Fila struct{
+	item []Elemento;
 	inicio apontador;
-	fim apontador;
+	final apontador;
 }
 
 
 func criar(novaFila *Fila){
 
 	novaFila.inicio = nil;
-	novaFila.fim = nil;
+	novaFila.final = nil;
 
 }
 
 func enfileirar (fila *Fila, novoItem Elemento){
 
-	novo *No;
+	fila.item = append(fila.item, novoItem);
 
-	novo.item = novoItem;
-
-	novo.proximo = nil;
-
-	if (fila.inicio == nil){
-		fila.inicio = novo;
-	}else{
-		fila.ultimo.proximo = novo;
+	if(fila.inicio == nil){
+		fila.inicio = &fila.item[len(fila.item) - 1];
+	} else{
+		fila.final = &fila.item[len(fila.item) -1];
 	}
-
-	fila.ultimo = novo;
 
 }
 
 func remover (fila *Fila){
 
+	var nullifier = Elemento{0, ""}; //Aqui eu deixo nulo para o GC coletar na memoria.
+
+	fila.item[0] = nullifier;
+
+	fila.item = fila.item[1: ];
+
+	fila.inicio = &fila.item[0];
+
+}
+
+func primeiroDaFila(fila *Fila) *Elemento{
+
+	return fila.inicio; 
+
+}
+
+func tamanhoDaFila(fila *Fila) int{
+
+	return len(fila.item);
 }
