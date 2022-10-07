@@ -15,10 +15,12 @@ type Fila struct{
 }
 
 
-func criar(novaFila *Fila){
+func criar(novaFila *Fila) *Fila{
 
 	novaFila.inicio = nil;
 	novaFila.final = nil;
+
+	return novaFila;
 
 }
 

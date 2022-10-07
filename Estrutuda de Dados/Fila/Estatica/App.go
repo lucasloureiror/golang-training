@@ -2,12 +2,11 @@ package main
 
 import (
 	"fmt"
-	"Estrutura/Fila"
+	"Fila" //Consertar importacao
 )
 
 func main(){
 
-	fmt.Println("Teste");
 
 
 }
