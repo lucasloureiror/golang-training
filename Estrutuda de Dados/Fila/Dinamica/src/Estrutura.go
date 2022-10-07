@@ -40,7 +40,11 @@ func Remover(fila *Fila) {
 
 	fila.Item = fila.Item[1:]
 
-	fila.Inicio = &fila.Item[0]
+	if len(fila.Item) > 0 {
+		fila.Inicio = &fila.Item[0]
+	} else {
+		fila.Inicio = nil
+	}
 
 }
 

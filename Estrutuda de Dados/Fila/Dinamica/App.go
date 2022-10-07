@@ -21,6 +21,7 @@ func main() {
 		fmt.Println("2 - Remover o primeiro da fila")
 		fmt.Println("3 - Descobrir qual o primeiro elemento da fila")
 		fmt.Println("4 - Descobrir quantos itens a fila possui")
+		fmt.Println("5 - SAIR")
 
 		fmt.Scan(&input)
 
@@ -49,9 +50,14 @@ func main() {
 
 		case 3: //Implementar função para verificar a lista vazia
 
-			primeiro := src.PrimeiroDaFila(&fila)
+			if src.ChecaNaoVazia(&fila) {
+				primeiro := src.PrimeiroDaFila(&fila)
 
-			fmt.Printf("O primeiro elemento da fila tem nome %s e chave %d\n", primeiro.Nome, primeiro.Chave)
+				fmt.Printf("O primeiro elemento da fila tem nome %s e chave %d\n", primeiro.Nome, primeiro.Chave)
+
+			} else {
+				fmt.Println("A fila está vazia!")
+			}
 
 		case 4:
 
@@ -63,8 +69,12 @@ func main() {
 				fmt.Println("A fila está vazia!")
 			}
 
+		case 5:
+			fmt.Println("Saindo!")
+			os.Exit(42)
+
 		default:
-			os.Exit(2)
+			fmt.Println("Opção inválida!")
 		}
 
 	}
