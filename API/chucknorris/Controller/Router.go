@@ -24,6 +24,15 @@ func Get() {
 		c.String(http.StatusOK, categories)
 	})
 
+	router.GET("/api/categories/search/:category", func(c *gin.Context) {
+		search := c.Param("category")
+		fact := RandomFactWithCategory(search)
+		c.JSON(http.StatusOK, gin.H{
+			"id":    fact.Id,
+			"value": fact.Value,
+		})
+	})
+
 	router.Run()
 }
 
