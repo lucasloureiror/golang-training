@@ -12,7 +12,7 @@ type Fact struct {
 	Id    string `json:"id"`
 }
 
-func RandomFact() string {
+func RandomFact() Fact {
 
 	resp, err := http.Get("https://api.chucknorris.io/jokes/random")
 
@@ -25,6 +25,6 @@ func RandomFact() string {
 
 	json.Unmarshal([]byte(responseData), &output)
 
-	return output.Value
+	return output
 
 }

@@ -11,10 +11,12 @@ func main() {
 	router := gin.Default()
 
 	router.GET("/api/random-fact", func(c *gin.Context) {
+		var fact Controller.Fact
 
-		fact := Controller.RandomFact()
+		fact = Controller.RandomFact()
 		c.JSON(http.StatusOK, gin.H{
-			"fato": fact,
+			"id":    fact.Id,
+			"value": fact.Value,
 		})
 		//fmt.Printf("The random fact is %s", fact)
 	})
