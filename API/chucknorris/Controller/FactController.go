@@ -1,18 +1,14 @@
 package Controller
 
 import (
+	"chucknorris/model"
 	"encoding/json"
 	"io/ioutil"
 	"log"
 	"net/http"
 )
 
-type Fact struct {
-	Value string `json:"value"`
-	Id    string `json:"id"`
-}
-
-func RandomFact() Fact {
+func RandomFact() model.Fact {
 
 	resp, err := http.Get("https://api.chucknorris.io/jokes/random")
 
@@ -21,7 +17,7 @@ func RandomFact() Fact {
 		log.Fatal(err)
 	}
 
-	var output Fact
+	var output model.Fact
 
 	json.Unmarshal([]byte(responseData), &output)
 
