@@ -21,9 +21,7 @@ func Get() {
 
 	router.GET("/api/categories", func(c *gin.Context) {
 		categories := Categorias()
-		c.JSON(http.StatusOK, gin.H{
-			"categories": categories,
-		})
+		c.String(http.StatusOK, categories)
 	})
 
 	router.Run()

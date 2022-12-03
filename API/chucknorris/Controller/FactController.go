@@ -3,7 +3,7 @@ package Controller
 import (
 	"chucknorris/model"
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 )
@@ -12,7 +12,7 @@ func RandomFact() model.Fact {
 
 	resp, err := http.Get("https://api.chucknorris.io/jokes/random")
 
-	responseData, err := ioutil.ReadAll(resp.Body)
+	responseData, err := io.ReadAll(resp.Body)
 	if err != nil {
 		log.Fatal(err)
 	}
